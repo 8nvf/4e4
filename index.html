@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Site Troll Animé 😈</title>
+
+<style>
+  body {
+    font-family: Arial;
+    text-align: center;
+    margin-top: 120px;
+    background: linear-gradient(270deg, #111, #222, #111);
+    background-size: 600% 600%;
+    animation: bgMove 8s ease infinite;
+    color: white;
+  }
+
+  @keyframes bgMove {
+    0% {background-position:0% 50%;}
+    50% {background-position:100% 50%;}
+    100% {background-position:0% 50%;}
+  }
+
+  h1 {
+    animation: fadeIn 2s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from {opacity: 0; transform: translateY(-20px);}
+    to {opacity: 1; transform: translateY(0);}
+  }
+
+  input {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+  }
+
+  button {
+    padding: 12px 20px;
+    font-size: 18px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    background: #ff2d55;
+    color: white;
+    transition: transform 0.2s;
+    animation: bounce 1.5s infinite;
+  }
+
+  button:hover {
+    transform: scale(1.1) rotate(-2deg);
+  }
+
+  @keyframes bounce {
+    0%, 100% {transform: translateY(0);}
+    50% {transform: translateY(-6px);}
+  }
+
+  #msg {
+    margin-top: 40px;
+    font-size: 22px;
+    animation: pop 0.4s ease;
+  }
+
+  @keyframes pop {
+    0% {transform: scale(0.5); opacity: 0;}
+    100% {transform: scale(1); opacity: 1;}
+  }
+
+  .shake {
+    animation: shake 0.4s;
+  }
+
+  @keyframes shake {
+    0% {transform: translateX(0);}
+    25% {transform: translateX(-10px);}
+    50% {transform: translateX(10px);}
+    75% {transform: translateX(-10px);}
+    100% {transform: translateX(0);}
+  }
+
+</style>
+</head>
+
+<body>
+
+<h1>Entre quelque chose 👇</h1>
+
+<input id="txt" placeholder="écris ici">
+<br>
+
+<button onclick="troll()">Valider 😈</button>
+
+<h2 id="msg"></h2>
+
+<script>
+function troll() {
+  const input = document.getElementById("txt");
+  const msg = document.getElementById("msg");
+
+  const messages = [
+    "❌ Erreur 404 : intelligence non trouvée",
+    "😂 Trop tard… tu es déjà dans le système",
+    "🧠 Analyse en cours... résultat : suspect 😏",
+    "💀 Chargement du troll... 99% terminé... ou pas"
+  ];
+
+  let random = messages[Math.floor(Math.random() * messages.length)];
+
+  msg.classList.remove("shake");
+  void msg.offsetWidth; // reset animation
+  msg.classList.add("shake");
+
+  msg.innerText = random;
+}
+</script>
+
+</body>
+</html>
